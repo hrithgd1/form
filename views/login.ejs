@@ -7,7 +7,7 @@
 <body>
     <div>
         <h3>LOGIN</h3>
-        <form action="home.ejs">
+        <form action="/home" method="post">
             <label for="user-name">Username: </label>
             <input type="text" name="user-name" id="user-name"><br>
             <label for="password">Password: </label>
@@ -15,7 +15,7 @@
             <input type="submit" value="Submit">
         </form>
         <h4>New User?</h4>
-        <button><a href="./register.html">Register</a></button>
+        <button><a href="/register">Register</a></button>
     </div>
 </body>
 </html>

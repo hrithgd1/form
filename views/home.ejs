@@ -1,47 +1,49 @@
+<!-- views/home.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home page</title>
 </head>
 <body>
-    <h1>Welcome <%=data.name%>! </h1>
-<p>
-    Email id: <%=data.email%> <br>
-    Department: <%=data.dept>
-</p>
-<div>
-   <form action="home.ejs" method="post">
-    <label for="findemp">Find Employee By Name: </label>
-    <input type="text" name="name" id="findemp"><br />
-    <input type="submit">
-   </form>
-   <%<ul>
-    <li>Employee name: <%=emp.name%></li>
-    <li>Email ID: <%emp.email%></li>
-    <li>Department: <%=emp.dept></li>
-   </ul>%>
-</div>
+  <h1>Welcome <%= data.name %>! </h1>
+  <p>
+    Email id: <%= data.email %> <br>
+    Department: <%= data.DEPARTMENT %>
+  </p>
 
-<div>
-    <form action="" method="post">
-        <label for="byDept">Find Employees By Department: </label>
-        <input type="text" name="dept" id="byDept"><br />
-        <input type="submit">
+  <div>
+    <form action="/findemp" method="post"> 
+      <label for="findemp">Find Employee By Name: </label>
+      <input type="text" name="name" id="findemp"><br />
+      <input type="submit">
     </form>
     <ul>
-        <% emps.forEach(todo => { %>
-            <li>
-                Employee Name: <%=todo.name%> Email id: <%=todo.email%> Department: <%=todo.dept> <a href="">edit</a><a href="">delete</a>
-            </li>
-        <% }) %>
+      <% if(byname) {%>
+        <li>
+          Employee Name: <%= byname.name %> Email id: <%= byname.email %> Department: <%= byname.dept %> <a href="">edit</a><a href="">delete</a>
+        </li>
+      <% } %>
     </ul>
-</div>
+  </div>
+
+  <div>
+    <form action="" method="post">
+      <label for="byDept">Find Employees By Department: </label>
+      <input type="text" name="dept" id="byDept"><br />
+      <input type="submit">
+    </form>
+    <% if (emps) { %>
+        <ul>
+          <% emps.forEach(emp => { %>
+            <li>
+              Employee Name: <%= emp.name %> Email id: <%= emp.email %> Department: <%= emp.dept %> <a href="">edit</a><a href="">delete</a>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+  </div>
 </body>
 </html>
-
-
-
-
-
